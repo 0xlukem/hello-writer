@@ -1,0 +1,22 @@
+# Generated / user-specific files
+agents/
+config/content-engine.yml
+output/
+
+# Node modules (if user installs opencode plugin locally)
+node_modules/
+package-lock.json
+package.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
