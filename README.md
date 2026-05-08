@@ -77,68 +77,52 @@ All with **confidence gates**, **checkpoints**, and **engineer approval** at key
 
 ## Architecture
 
-```
-                    USER INPUT
-                        |
-                        v
-              +-------------------+
-              |   orchestrator    | <-- Routes, gates, checkpoints
-              +--------+----------+
-                       |
-         +-------------+-------------+
-         |             |             |
-         v             v             v
-   +-----------+ +-----------+ +-----------+
-   | researcher| |seo-expert | |digital-twin|
-   |  (opt)    | |  (opt)    | |  (opt)     |
-   +-----+-----+ +-----+-----+ +-----+-----+
-         |             |             |
-         +------+------+------+------+
-                |             |
-                v             v
-          +-----------+ +-----------+
-          |blog-writer| | voice     |
-          |           | | briefs    |
-          +-----+-----+ +-----------+
-                |
-                v
-          +-----------+
-          |   editor  | <-- Quality gate (score >= 85)
-          +-----+-----+
-                |
-      +---------+---------+
-      |         |         |
-      v         v         v
- +---------+ +-------+ +-------+
- | image   | |repur- | |editor |
- | creator | | poser | | light |
- | (opt)   | | (opt) | | (opt) |
- +---------+ +---+---+ +-------+
-             |
-     +-------+-------+-------+
-     |       |       |
-     v       v       v
- +-------+ +-----+ +-----+
- |linkedin| |  x  | |reel |
- | writer | |thread| |script|
- | (opt)  | |writer| |writer|
- +--------+ +-----+ +-----+
-     |       |       |
-     +-------+-------+
-             |
-     +-------+-------+-------+
-     |       |       |
-     v       v       v
- +-------+ +-----------+ +-----------+
- |report | | feedback  | | history   |
- | writer| | architect | | logger    |
- +-------+ +-----------+ +-----------+
-                |
-                v
-         +------------+
-         |   MEMORY   | <-- Proposed updates, engineer-approved
-         |   LOOP     |
-         +------------+
+```mermaid
+flowchart TD
+    A["👤 User Input: Topic"] --> B["🎛️ orchestrator<br/><i>Routes, gates, checkpoints</i>"]
+
+    B --> C["🔍 researcher<br/>[optional]"]
+    B --> D["📈 seo-expert<br/>[optional]"]
+    B --> E["🎭 digital-twin"]
+
+    C --> F["📄 Research Brief"]
+    D --> G["📄 SEO Structure"]
+    E --> H["📄 Voice Briefs"]
+
+    F & G & H --> I["✍️ blog-writer"]
+    I --> J["📝 editor<br/><b>Quality Gate</b><br/><i>score >= 85</i>"]
+
+    J -->|PASS| K["🖼️ image-creator<br/>[optional]<br/><i>2-step approval</i>"]
+    J -->|PASS| L["🔄 repurposer<br/>[optional]"]
+    J -->|PASS| M["📝 editor-light<br/>[optional]"]
+    J -->|LOOP<br/>score 70-84| I
+
+    L --> N["💼 linkedin-writer<br/>[optional]"]
+    L --> O["🐦 x-thread-writer<br/>[optional]"]
+    L --> P["🎬 reel-script-writer<br/>[optional]"]
+
+    K & M & N & O & P --> Q["📋 report-writer"]
+    Q --> R["🧠 feedback-architect"]
+    Q --> S["📚 history-logger"]
+
+    R --> T["🔄 Memory Loop<br/><i>Proposed updates</i>"]
+    T --> U{"👤 Engineer<br/>Approval?"}
+    U -->|✅ Approve| V["💾 Update Memory"]
+    U -->|❌ Reject| W["⏭️ Skip"]
+    V & W --> X["🏁 Session Complete"]
+
+    style B fill:#e1f5fe
+    style J fill:#fff3e0
+    style U fill:#fce4ec
+    style X fill:#e8f5e9
+    style C stroke-dasharray: 5 5
+    style D stroke-dasharray: 5 5
+    style K stroke-dasharray: 5 5
+    style L stroke-dasharray: 5 5
+    style M stroke-dasharray: 5 5
+    style N stroke-dasharray: 5 5
+    style O stroke-dasharray: 5 5
+    style P stroke-dasharray: 5 5
 ```
 
 ### Phase Flow
@@ -483,7 +467,7 @@ Run `opencode models` to see available models. Update `config/content-engine.yml
 
 Check that:
 1. `setup.sh` completed without errors
-2. `agents/` directory has 15 `.md` files
+2. `agents/` directory has 16 `.md` files
 3. `config/content-engine.yml` exists
 4. OpenCode providers are configured (`opencode providers list`)
 
