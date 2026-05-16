@@ -179,7 +179,7 @@ SESSION RETROSPECTIVE
 ## 13) Learning and Memory Routing
 - `feedback-architect` produces retrospective learnings and proposes memory updates.
 - `history-logger` stores retrospective summary in history logs.
-- Agent memory files under `agents/memory/` are updated with reusable, non-duplicate patterns.
+- Agent memory files under `.opencode/agents/memory/` are updated with reusable, non-duplicate patterns.
 - **Memory updates require engineer approval**: feedback-architect PROPOSES but NEVER writes to memory files directly. Orchestrator must checkpoint with engineer before applying any proposed memory changes.
 
 ## 14) Memory Update Workflow
@@ -193,7 +193,7 @@ SESSION RETROSPECTIVE
 ### 14.2 Approval Phase
 1. Orchestrator presents proposals to engineer.
 2. Engineer reviews and approves/rejects each proposal.
-3. Only approved updates are written to `agents/memory/*.md`.
+3. Only approved updates are written to `.opencode/agents/memory/*.md`.
 
 ### 14.3 Application Phase
 1. Orchestrator applies approved updates.
@@ -207,7 +207,7 @@ SESSION RETROSPECTIVE
 - Do not skip mandatory gates (editor, feedback-architect, history-logger).
 - **Do not auto-apply permanent rule changes.**
 - **Rule updates and memory file updates remain apply-only-after-engineer-approval.**
-- The feedback-architect may PROPOSE memory updates but must NEVER write to `agents/memory/*.md` directly.
+- The feedback-architect may PROPOSE memory updates but must NEVER write to `.opencode/agents/memory/*.md` directly.
 - Orchestrator must checkpoint with engineer before applying any proposed memory changes.
 - All content must be saved to `output/YYYY-MM-DD_topic/`.
   - `final/` - delivery-ready assets (blog.md, linkedin-post.md, x-thread.md, reel-script.md)

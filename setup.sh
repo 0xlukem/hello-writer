@@ -13,8 +13,8 @@ NC='\033[0m' # No Color
 
 # Paths
 CONFIG_FILE="config/content-engine.yml"
-AGENTS_DIR="agents"
-MEMORY_DIR="agents/memory"
+AGENTS_DIR=".opencode/agents"
+MEMORY_DIR=".opencode/agents/memory"
 TEMPLATES_DIR="templates"
 OUTPUT_DIR="output"
 
@@ -654,7 +654,8 @@ print_summary() {
     echo -e "${BOLD}Next steps:${NC}"
     echo "  1. Review your persona: $MEMORY_DIR/digital-twin.memory.md"
     echo "  2. Run the workflow:"
-    echo -e "     ${CYAN}opencode run workflows/content-engine.md${NC}"
+    echo -e "     ${CYAN}opencode${NC}"
+    echo -e "     Then ask: ${CYAN}Run the content engine workflow to write a blog about [your topic]${NC}"
     echo ""
     echo -e "${BOLD}To reconfigure:${NC}"
     echo -e "  ${CYAN}./setup.sh${NC}"
