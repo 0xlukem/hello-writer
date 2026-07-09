@@ -32,7 +32,7 @@
 
 ```bash
 # 1. Get the project
-git clone <repo-url> hello-writer
+git clone https://github.com/0xlukem/hello-writer.git hello-writer
 cd hello-writer
 
 # 2. Run the terminal wizard
@@ -47,7 +47,7 @@ opencode
 
 ```bash
 # 1. Get the project
-git clone <repo-url> hello-writer
+git clone https://github.com/0xlukem/hello-writer.git hello-writer
 cd hello-writer
 
 # 2. Run the AI-guided setup workflow
@@ -178,7 +178,7 @@ Best for: users who want speed, know what they want, and are comfortable in the 
 
 ```bash
 # Clone the repository
-git clone <repo-url> hello-writer
+git clone https://github.com/0xlukem/hello-writer.git hello-writer
 cd hello-writer
 
 # Run the interactive setup wizard
@@ -205,7 +205,7 @@ Best for: users who want a conversational experience, follow-up questions, and a
 
 ```bash
 # Clone the repository
-git clone <repo-url> hello-writer
+git clone https://github.com/0xlukem/hello-writer.git hello-writer
 cd hello-writer
 
 # Run the AI-guided setup
@@ -255,18 +255,21 @@ The orchestrator will guide you through:
 
 ```
 output/
+├── _meta.md                  # Root metadata for generated sessions
 └── 2026-05-08_my-topic/
     ├── _meta.md              # Session report
     ├── final/
     │   ├── blog.md           # Blog post
-    │   ├── linkedin.md       # LinkedIn post (if enabled)
-    │   ├── x_thread.md       # X thread (if enabled)
-    │   └── reel_script.md    # Reel script (if enabled)
+    │   ├── linkedin-post.md  # LinkedIn post (if enabled)
+    │   ├── x-thread.md       # X thread (if enabled)
+    │   └── reel-script.md    # Reel script (if enabled)
     ├── artifacts/
     │   ├── research-brief.md
     │   ├── seo-analysis.md
     │   ├── voice-brief-*.md
-    │   └── editor-output.md
+    │   ├── repurposer-output.md
+    │   ├── editor-output.md
+    │   └── feedback-architect.md
     └── images/
         ├── my-topic-photo-1.png
         ├── my-topic-photo-2.png
@@ -347,7 +350,10 @@ Edit `config/content-engine.yml` and re-run:
 Or edit directly and re-render agents:
 ```bash
 # Edit config/content-engine.yml, then:
-./setup.sh --render-only  # (not yet implemented, edit and re-run setup)
+./setup.sh --render-only
+
+# Validate the generated config, agents, and memories:
+./setup.sh --validate-only
 ```
 
 ### Disabling Agents

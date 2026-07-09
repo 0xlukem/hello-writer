@@ -25,8 +25,8 @@ Workflow intent:
 Workflow-specific execution contract:
 - Content policy: workflow applies only to text-based content (blog, social, scripts).
 - Output format: all content saved as Markdown in `output/YYYY-MM-DD_topic/`.
-  - `final/` - delivery-ready assets (blog.md, linkedin-post.md, x-thread.md, reel-script.md)
-  - `artifacts/` - supporting documents (research-brief.md, seo-analysis.md, voice-brief-*.md, repurposer-output.md, editor-output.md, feedback-architect.md)
+  - `final/` - delivery-ready assets (`blog.md`, `linkedin-post.md`, `x-thread.md`, `reel-script.md`)
+  - `artifacts/` - supporting documents (`research-brief.md`, `seo-analysis.md`, `voice-brief-*.md`, `repurposer-output.md`, `editor-output.md`, `feedback-architect.md`)
   - `images/` - AI-generated blog images (`<topic-slug>-photo-1.png`, etc.)
   - `_meta.md` - session report at the root of the topic folder
 - Confidence gate policy:
@@ -53,7 +53,7 @@ Workflow-specific execution contract:
   - `image-creator` runs only after `editor` returns `content_quality_score` >= 85.
   - Orchestrator must checkpoint with engineer before `image-creator` runs: "Do you want images for this blog post?"
   - `image-creator` must propose 3 concepts and await engineer approval before generating.
-  - If image generation fails, agent must save prompts to `images/prompts.md` and return `FAIL` with risk noted.
+  - If image generation fails, agent must save prompts to `output/YYYY-MM-DD_topic/images/prompts.md` and return `FAIL` with risk noted.
 
 Closeout contract:
 - End every session with retrospective summary.

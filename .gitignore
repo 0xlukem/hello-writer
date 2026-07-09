@@ -1,5 +1,7 @@
 # Generated / user-specific files
-agents/
+/agents/
+/.opencode/agents/
+/.opencode/testing/
 config/content-engine.yml
 output/
 

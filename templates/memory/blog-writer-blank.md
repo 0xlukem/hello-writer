@@ -3,13 +3,13 @@
 > Preferred structures, formatting patterns, and common corrections.
 
 ## Preferred Structures
-- <structure>: <when to use>
+- None recorded yet.
 
 ## Formatting Patterns
-- <pattern>: <context>
+- None recorded yet.
 
 ## Common Corrections
-- <correction>: <how to fix>
+- None recorded yet.
 
 ## Successful Approaches
-- <date>: <approach>
+- None recorded yet.

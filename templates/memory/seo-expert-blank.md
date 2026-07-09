@@ -3,13 +3,13 @@
 > Past keyword strategies and effective structures.
 
 ## Keyword Patterns That Worked
-- <date>: <pattern>
+- None recorded yet.
 
 ## Preferred Tools/Methods
-- <method>: <result>
+- None recorded yet.
 
 ## Common Corrections
-- <correction>: <context>
+- None recorded yet.
 
 ## Audience Insights
-- <insight>: <source>
+- None recorded yet.

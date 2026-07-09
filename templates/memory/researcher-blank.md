@@ -3,13 +3,13 @@
 > Past research strategies and preferred sources.
 
 ## Preferred Sources
-- <source type>: <why it works>
+- None recorded yet.
 
 ## Search Strategies
-- <strategy>: <when to use>
+- None recorded yet.
 
 ## Verified Patterns
-- <date>: <pattern learned>
+- None recorded yet.
 
 ## Common Pitfalls
-- <pitfall>: <how to avoid>
+- None recorded yet.

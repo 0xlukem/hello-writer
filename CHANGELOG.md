@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `workflows/setup-workflow.md` — AI-guided conversational setup (~5-10 min)
 - **Digital Twin persona system** — 15-question wizard that builds a voice profile
 - **Automatic writing sample analysis** — AI-guided setup reads samples and extracts voice patterns (hooks, tone, CTAs, forbidden words)
-- **Template rendering system** — `{{VAR}}` placeholders in `templates/agents/` render to `agents/` with user-chosen models
+- **Template rendering system** — `{{VAR}}` placeholders in `templates/agents/` render to `.opencode/agents/` with user-chosen models
 - **Config-driven architecture** — `config/content-engine.yml` as single source of truth
 - **Confidence gates** — Research, SEO, content quality (0-100), and session confidence scores
 - **Checkpoint system** — Approval-required decisions produce transcript artifacts
@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Built-in styleguides** — Google Developer Docs (Full) and (Light)
 - **Demo persona** — Alex Rivera (developer-educator) included as starting example
 - **Re-runnable setup** — Detects existing config, offers update / overwrite / cancel
-- **Blank memory templates** — 7 agent memory files auto-generated with section headers
+- **Blank memory templates** — 11 agent memory files auto-generated with section headers
 - **Agent count validation** — Setup verifies all 16 agents are rendered
 - **Model validation** — Checks chosen models against `opencode models`
 

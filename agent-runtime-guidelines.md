@@ -12,7 +12,7 @@ It is mandatory for orchestrator and all workflow agents.
 - Default mode is step-by-step sequential phase execution.
 - Orchestrator decisions are based on confidence thresholds, not engineer approval at every step.
 - Gate failures follow the workflow retry loop.
-- Every approval-required checkpoint must produce a transcript artifact under `testing/checkpoint-transcripts/`.
+- Every approval-required checkpoint must produce a transcript artifact under `.opencode/testing/checkpoint-transcripts/`.
 
 ## 3) Mandatory vs Skippable Phases
 - Default expectation: run the full workflow phase list.
@@ -91,7 +91,7 @@ PHASE SKIP JUSTIFICATION
 - checkpoint_id: <required>
 - skip_tag: <NO_RESEARCH_NEEDED|NO_SEO_NEEDED|NO_SHORTFORM|BLOG_ONLY|NO_IMAGES>
 - engineer_approval: <required>
-- transcript_path: <required path under testing/checkpoint-transcripts/>
+- transcript_path: <required path under .opencode/testing/checkpoint-transcripts/>
 ```
 
 ## 7) Checkpoint Transcript Contract (Required)
@@ -210,7 +210,7 @@ SESSION RETROSPECTIVE
 - The feedback-architect may PROPOSE memory updates but must NEVER write to `.opencode/agents/memory/*.md` directly.
 - Orchestrator must checkpoint with engineer before applying any proposed memory changes.
 - All content must be saved to `output/YYYY-MM-DD_topic/`.
-  - `final/` - delivery-ready assets (blog.md, linkedin-post.md, x-thread.md, reel-script.md)
-  - `artifacts/` - supporting documents (research-brief.md, seo-analysis.md, voice-brief-*.md, repurposer-output.md, editor-output.md, feedback-architect.md)
+  - `final/` - delivery-ready assets (`blog.md`, `linkedin-post.md`, `x-thread.md`, `reel-script.md`)
+  - `artifacts/` - supporting documents (`research-brief.md`, `seo-analysis.md`, `voice-brief-*.md`, `repurposer-output.md`, `editor-output.md`, `feedback-architect.md`)
   - `images/` - AI-generated blog images (`<topic-slug>-photo-1.png`, etc.)
   - `_meta.md` - session report at the root of the topic folder

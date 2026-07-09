@@ -3,13 +3,13 @@
 > Past retrospectives and improvement proposals.
 
 ## Session Learnings
-- <date>: <lesson>
+- None recorded yet.
 
 ## Proposed Improvements
-- <date>: <proposal>
+- None recorded yet.
 
 ## Approved Changes
-- <date>: <change>
+- None recorded yet.
 
 ## Rejected Proposals
-- <date>: <proposal> - <reason>
+- None recorded yet.

@@ -4,94 +4,90 @@
 > Fill in all sections during setup, or start with the demo persona and refine over time.
 
 ## Identity
-- Name: <your name>
-- Handle: <your handle>
-- Background: <your background>
-- Journey: <your journey in 1-2 sentences>
-- Core belief: <your core belief or catchphrase>
+- Name: Not provided
+- Handle: Not provided
+- Background: Not provided
+- Journey: Not provided
+- Core belief: Not provided
 
 ## Voice Core (Universal - All Platforms)
-- Personality traits: <e.g., empathetic, punchy, sarcastic>
-- Communication style: <e.g., conversational, formal, storytelling>
-- Core values: <what you stand for>
-- Bilingual or multilingual notes: <if applicable>
-- Metaphor preferences: <journey, navigation, building, etc.>
-- Signature rhetorical devices: <questions as hooks, personal stories, etc.>
+- Personality traits: Not provided
+- Communication style: Not provided
+- Core values: Not provided
+- Bilingual or multilingual notes: Not provided
+- Metaphor preferences: Not provided
+- Signature rhetorical devices: Not provided
 
 ## Opinions & Stances (Never Compromise)
-- <stance 1>
-- <stance 2>
-- <stance 3>
+- None recorded yet.
 
 ## Voice by Platform
 
 ### Blog
-- **Tone**: <educational, storytelling, technical, etc.>
+- **Tone**: Not provided
 - **Structure**:
-  - Hook: <how you open>
-  - Body: <how you structure>
-  - CTA: <how you close>
-- **Metaphors**: <which ones you use>
-- **Transitions**: <phrases you use>
-- **Closers**: <phrases you use>
-- **Language**: <English, Spanish, bilingual>
+  - Hook: Not provided
+  - Body: Not provided
+  - CTA: Not provided
+- **Metaphors**: Not provided
+- **Transitions**: Not provided
+- **Closers**: Not provided
+- **Language**: Not provided
 - **Forbidden**:
-  - <word/phrase>
+  - None recorded yet.
 
 ### LinkedIn
-- **Tone**: <professional but conversational, etc.>
+- **Tone**: Not provided
 - **Structure**:
-  - Hook: <how you open>
-  - Body: <how you structure>
-  - CTA: <how you close>
-- **Metaphors**: <which ones you use>
-- **Transitions**: <phrases you use>
-- **Closers**: <phrases you use>
-- **Language**: <English, Spanish, bilingual>
-- **Hashtags**: <max count, preferred tags>
+  - Hook: Not provided
+  - Body: Not provided
+  - CTA: Not provided
+- **Metaphors**: Not provided
+- **Transitions**: Not provided
+- **Closers**: Not provided
+- **Language**: Not provided
+- **Hashtags**: Not provided
 - **Forbidden**:
-  - <word/phrase>
+  - None recorded yet.
 
 ### X / Twitter Thread
-- **Tone**: <punchy, scannable, etc.>
+- **Tone**: Not provided
 - **Structure**:
-  - 1/x: <how you open>
-  - 2/x-4/x: <how you structure>
-  - Final: <how you close>
-- **Metaphors**: <which ones you use>
-- **Transitions**: <phrases you use>
-- **Closers**: <phrases you use>
-- **Language**: <English, Spanish, bilingual>
+  - 1/x: Not provided
+  - 2/x-4/x: Not provided
+  - Final: Not provided
+- **Metaphors**: Not provided
+- **Transitions**: Not provided
+- **Closers**: Not provided
+- **Language**: Not provided
 - **Forbidden**:
-  - <word/phrase>
+  - None recorded yet.
 
 ### Reel Script
-- **Tone**: <energetic, visual, etc.>
+- **Tone**: Not provided
 - **Structure**:
-  - Scene 1 (0-3s): <how you open>
-  - Scene 2 (3-30s): <how you structure>
-  - Scene 3 (final 5s): <how you close>
-- **Metaphors**: <which ones you use>
-- **Transitions**: <phrases you use>
-- **Closers**: <phrases you use>
-- **Language**: <English, Spanish, bilingual>
+  - Scene 1 (0-3s): Not provided
+  - Scene 2 (3-30s): Not provided
+  - Scene 3 (final 5s): Not provided
+- **Metaphors**: Not provided
+- **Transitions**: Not provided
+- **Closers**: Not provided
+- **Language**: Not provided
 - **Forbidden**:
-  - <word/phrase>
+  - None recorded yet.
 
 ## Signature Phrases (Adapt to Topic)
-- Openers: <phrases>
-- Transitions: <phrases>
-- Emphasis: <how you emphasize>
-- Closers: <phrases>
+- Openers: Not provided
+- Transitions: Not provided
+- Emphasis: Not provided
+- Closers: Not provided
 
 ## Evolution Log
-- <date>: Initial profile created
+- Initial setup: Blank profile created
 
 ## Content Integrity Rules (Apply Across All Platforms)
-- <rule 1>
-- <rule 2>
+- None recorded yet.
 
 ## Voice Drift Detection (For Feedback Architect)
 Watch for these deviations from your voice:
-- <deviation 1>
-- <deviation 2>
+- None recorded yet.

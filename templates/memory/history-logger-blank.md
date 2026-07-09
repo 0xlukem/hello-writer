@@ -7,7 +7,4 @@
 
 ## Session History
 
-### Session <id> - <date>
-- Topic: <topic>
-- Status: <COMPLETED|PARTIAL|BLOCKED>
-- Key Lesson: <lesson>
+- No sessions recorded yet.
