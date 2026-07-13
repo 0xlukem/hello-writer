@@ -72,8 +72,9 @@ Use tags in skip decisions and matrix rows:
 - `NO_SEO_NEEDED`: `seo-expert` auto-skip when user provides explicit structure.
 - `NO_SHORTFORM`: `repurposer` and platform writers auto-skip when only blog is requested.
 - `BLOG_ONLY`: all short-form phases auto-skip.
-- `NO_VOICE_ADAPTATION`: `digital-twin` auto-skip only when user provides explicit voice guidance (rare).
 - `NO_IMAGES`: `image-creator` auto-skip when engineer declines images or only text content is requested.
+
+Voice guidance from the user never skips `digital-twin`; it is passed into `digital-twin` so the agent can normalize it into platform-specific Voice Briefs before writers run.
 
 Risk scale is always `none|low|medium|high`.
 `high` risk skips are forbidden.
@@ -178,9 +179,10 @@ SESSION RETROSPECTIVE
 
 ## 13) Learning and Memory Routing
 - `feedback-architect` produces retrospective learnings and proposes memory updates.
-- `history-logger` stores retrospective summary in history logs.
+- `history-logger` stores factual retrospective summaries in history logs.
 - Agent memory files under `.opencode/agents/memory/` are updated with reusable, non-duplicate patterns.
 - **Memory updates require engineer approval**: feedback-architect PROPOSES but NEVER writes to memory files directly. Orchestrator must checkpoint with engineer before applying any proposed memory changes.
+- **History log exception**: history-logger may append factual audit entries to `.opencode/agents/memory/history-logger.memory.md` without a memory-update approval checkpoint. It must not write editorial lessons or reusable preferences outside that audit log entry.
 
 ## 14) Memory Update Workflow
 
@@ -193,7 +195,7 @@ SESSION RETROSPECTIVE
 ### 14.2 Approval Phase
 1. Orchestrator presents proposals to engineer.
 2. Engineer reviews and approves/rejects each proposal.
-3. Only approved updates are written to `.opencode/agents/memory/*.md`.
+3. Only approved updates are written to `.opencode/agents/memory/*.md`, except factual history-logger audit appends described above.
 
 ### 14.3 Application Phase
 1. Orchestrator applies approved updates.
@@ -209,6 +211,7 @@ SESSION RETROSPECTIVE
 - **Rule updates and memory file updates remain apply-only-after-engineer-approval.**
 - The feedback-architect may PROPOSE memory updates but must NEVER write to `.opencode/agents/memory/*.md` directly.
 - Orchestrator must checkpoint with engineer before applying any proposed memory changes.
+- History-logger may append factual audit entries to its own memory file without approval, but may not mutate other memory files.
 - All content must be saved to `output/YYYY-MM-DD_topic/`.
   - `final/` - delivery-ready assets (`blog.md`, `linkedin-post.md`, `x-thread.md`, `reel-script.md`)
   - `artifacts/` - supporting documents (`research-brief.md`, `seo-analysis.md`, `voice-brief-*.md`, `repurposer-output.md`, `editor-output.md`, `feedback-architect.md`)

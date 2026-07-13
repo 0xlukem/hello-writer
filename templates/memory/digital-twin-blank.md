@@ -1,93 +1,96 @@
-# Digital Twin Profile
+# Digital Twin Voice Memory
 
-> This is your voice profile. The Digital Twin agent reads this to generate platform-specific Voice Briefs for writers.
-> Fill in all sections during setup, or start with the demo persona and refine over time.
+> This memory stores reusable voice, tone, positioning, platform, and drift-detection rules for the person or brand using hello-writer.
+> Run `./setup.sh --voice` to rebuild it with the guided Voice Builder.
 
-## Identity
+## Brand Snapshot
 - Name: Not provided
 - Handle: Not provided
-- Background: Not provided
-- Journey: Not provided
-- Core belief: Not provided
+- Role: Not provided
+- Promise: Not provided
+- Category: Not provided
+- Builder mode: Not provided
 
-## Voice Core (Universal - All Platforms)
-- Personality traits: Not provided
-- Communication style: Not provided
-- Core values: Not provided
-- Bilingual or multilingual notes: Not provided
-- Metaphor preferences: Not provided
-- Signature rhetorical devices: Not provided
+## Audience
+- Primary audience: Not provided
+- Technical level: Not provided
+- Pain points: Not provided
+- Reading context: Not provided
 
-## Opinions & Stances (Never Compromise)
-- None recorded yet.
+## Positioning
+- Defends: Not provided
+- Rejects: Not provided
+- Strong topics: Not provided
+- Boundaries: Not provided
 
-## Voice by Platform
+## Voice Principles
+- Lead with the promise and audience context before style.
+- Preserve the stated positions even when changing platform or format.
+- Prefer concrete claims, useful specificity, and direct language.
+- Avoid generic AI phrasing, corporate filler, and unsupported hype.
 
+## Tone Sliders
+- Casual/Formal: Not provided
+- Technical/Narrative: Not provided
+- Direct/Explanatory: Not provided
+- Warm/Critical: Not provided
+- Simple/Sophisticated: Not provided
+
+## Writing Mechanics
+- Sentence style: Not provided
+- Paragraph style: Not provided
+- Bullet style: Not provided
+- Hook style: Not provided
+- CTA style: Not provided
+- Humor style: Not provided
+- Metaphor style: Not provided
+- Primary language: Not provided
+
+## Platform Rules
 ### Blog
-- **Tone**: Not provided
-- **Structure**:
-  - Hook: Not provided
-  - Body: Not provided
-  - CTA: Not provided
-- **Metaphors**: Not provided
-- **Transitions**: Not provided
-- **Closers**: Not provided
-- **Language**: Not provided
-- **Forbidden**:
-  - None recorded yet.
+Not provided
 
 ### LinkedIn
-- **Tone**: Not provided
-- **Structure**:
-  - Hook: Not provided
-  - Body: Not provided
-  - CTA: Not provided
-- **Metaphors**: Not provided
-- **Transitions**: Not provided
-- **Closers**: Not provided
-- **Language**: Not provided
-- **Hashtags**: Not provided
-- **Forbidden**:
-  - None recorded yet.
+Not provided
 
-### X / Twitter Thread
-- **Tone**: Not provided
-- **Structure**:
-  - 1/x: Not provided
-  - 2/x-4/x: Not provided
-  - Final: Not provided
-- **Metaphors**: Not provided
-- **Transitions**: Not provided
-- **Closers**: Not provided
-- **Language**: Not provided
-- **Forbidden**:
-  - None recorded yet.
+### X / Twitter
+Not provided
 
-### Reel Script
-- **Tone**: Not provided
-- **Structure**:
-  - Scene 1 (0-3s): Not provided
-  - Scene 2 (3-30s): Not provided
-  - Scene 3 (final 5s): Not provided
-- **Metaphors**: Not provided
-- **Transitions**: Not provided
-- **Closers**: Not provided
-- **Language**: Not provided
-- **Forbidden**:
-  - None recorded yet.
+### Reel
+Not provided
 
-## Signature Phrases (Adapt to Topic)
-- Openers: Not provided
-- Transitions: Not provided
-- Emphasis: Not provided
-- Closers: Not provided
+## Do / Don't
+### Do
+Use the Brand Snapshot, Audience, Positioning, and Writing Mechanics as source of truth.
+
+### Don't
+Do not use forbidden language, unsupported claims, or a voice that conflicts with the calibration preview.
+
+## Forbidden Language
+- Words or phrases: None recorded yet
+- Tone patterns: None recorded yet
+- Exaggerations or claims: None recorded yet
+
+## Sample Analysis
+### Local analysis
+None recorded yet
+
+### AI-assisted analysis
+None recorded yet
+
+## Calibration Preview
+- Brand: Not provided
+- Audience: Not provided
+- Defends: Not provided
+- Rejects: Not provided
+- Hook style: Not provided
+- CTA style: Not provided
+- Calibration notes: None recorded yet
 
 ## Evolution Log
 - Initial setup: Blank profile created
 
-## Content Integrity Rules (Apply Across All Platforms)
-- None recorded yet.
-
-## Voice Drift Detection (For Feedback Architect)
-Watch for these deviations from your voice:
-- None recorded yet.
+## Voice Drift Detection
+- Compare future drafts against Brand Snapshot, Positioning, Tone Sliders, Writing Mechanics, Forbidden Language, and Calibration Preview.
+- Flag drift when content uses forbidden language, changes the audience, contradicts positioning, or adopts a tone outside the sliders.
+- Update this memory only after explicit user approval.

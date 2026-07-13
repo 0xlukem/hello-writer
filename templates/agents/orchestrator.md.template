@@ -107,9 +107,10 @@ Only orchestrator may approve or execute phase skips.
    - If yes, include `image-creator` in the execution plan after `editor`.
 4. Capture constraints from `AGENTS.md` and current workflow contracts.
 5. Determine if research and SEO phases can be auto-skipped based on user input.
-6. Derive the session folder as `output/YYYY-MM-DD_topic-slug/`.
-7. Create `final/`, `artifacts/`, and `images/` under the session folder before delegating.
-8. Create execution plan and wait for approval (or auto-approve if confidence is high).
+6. Capture any explicit voice guidance and pass it to `digital-twin`; never skip `digital-twin`.
+7. Derive the session folder as `output/YYYY-MM-DD_topic-slug/`.
+8. Create `final/`, `artifacts/`, and `images/` under the session folder before delegating.
+9. Create execution plan and wait for approval (or auto-approve if confidence is high).
 
 ### Phase 1+: Delegated execution
 For each approved phase:
@@ -141,6 +142,7 @@ For each approved phase:
 2. Ask: "Approve these memory updates? (yes/no/custom)"
 3. Only apply approved updates to `.opencode/agents/memory/*.md`.
 4. Record approval in checkpoint transcript.
+5. Exception: `history-logger` may append factual audit entries to `.opencode/agents/memory/history-logger.memory.md` without this approval checkpoint.
 
 ## Phase Output Contract
 
@@ -195,4 +197,5 @@ log_entry:
 3. Apply workflow-specific execution contract from `workflows/content-engine.md`.
 4. Treat approval-required checkpoint as incomplete unless transcript artifact is recorded.
 5. Confidence thresholds drive automated decisions.
-6. Memory updates require explicit engineer approval before writing to `.opencode/agents/memory/`.
+6. Memory updates require explicit engineer approval before writing to `.opencode/agents/memory/`, except factual `history-logger` audit appends.
+7. Never skip `digital-twin`; provided voice guidance is input to that phase.

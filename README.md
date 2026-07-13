@@ -1,268 +1,166 @@
 # hello-writer
 
-> A dry, reusable, multi-agent content engine for blogs, social posts, and video scripts.
+Reusable multi-agent content engine for blogs, social posts, and video scripts.
 
-**hello-writer** is an AI-powered content pipeline that turns a single topic into polished, multi-platform content. Think of it as "CI/CD for content" — research, SEO, voice adaptation, writing, editing, image generation, and repurposing, all orchestrated automatically through [OpenCode](https://opencode.ai).
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
----
-
-## Table of Contents
-
-- [Quick Start](#quick-start)
-- [What It Does](#what-it-does)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Platform Support](#platform-support)
-- [How It Works](#how-it-works)
-- [Configuration](#configuration)
-- [Digital Twin (Voice Profile)](#digital-twin-voice-profile)
-- [Memory Loop](#memory-loop)
-- [Adding Custom Agents](#adding-custom-agents)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-
----
+`hello-writer` turns one topic into a governed content session: research, SEO,
+voice adaptation, writing, editing, optional images, social repurposing, session
+reporting, and memory proposals through OpenCode agents.
 
 ## Quick Start
 
-### Option A: Fast Setup (Terminal)
-
 ```bash
-# 1. Get the project
 git clone https://github.com/0xlukem/hello-writer.git hello-writer
 cd hello-writer
 
-# 2. Run the terminal wizard
 ./setup.sh
 
-# 3. Start creating content
 opencode
-# Then ask: "Run the content engine workflow to write a blog about [your topic]"
+# Ask: Run the content engine workflow to write a blog about [your topic]
 ```
 
-### Option B: AI-Guided Setup (Conversational)
-
-```bash
-# 1. Get the project
-git clone https://github.com/0xlukem/hello-writer.git hello-writer
-cd hello-writer
-
-# 2. Run the AI-guided setup workflow
-opencode
-# Then ask: "Run the setup workflow"
-
-# 3. Start creating content
-opencode
-# Then ask: "Run the content engine workflow to write a blog about [your topic]"
-```
-
----
+If you naturally look for an install command, `./install.sh` is available as a
+thin alias for `./setup.sh`.
 
 ## What It Does
 
-Give **hello-writer** a topic like *"Introduction to Rust for Web Developers"* and it will:
+Given a topic, the engine can:
 
-1. **Research** the topic (facts, stats, trends, gaps)
-2. **Plan SEO** (keywords, structure, meta descriptions)
-3. **Adapt to your voice** (via Digital Twin persona)
-4. **Write a blog post** (800-2,500 words, Markdown)
-5. **Edit and score** the content (quality gate, 0-100 score)
-6. **Generate images** (3 AI concepts, engineer-approved)
-7. **Repurpose** into social content (LinkedIn, X/Twitter, Reels)
-8. **Learn from the session** (proposes memory updates for next time)
+1. Research and fact-check the topic.
+2. Plan SEO structure and search intent.
+3. Generate a platform-specific Voice Brief from the Digital Twin memory.
+4. Write a long-form Markdown blog post.
+5. Score and edit the draft through quality gates.
+6. Propose and generate images after explicit approval.
+7. Repurpose the approved blog into LinkedIn, X, and Reel script outputs.
+8. Close with a session report, history entry, and proposed memory updates.
 
-All with **confidence gates**, **checkpoints**, and **engineer approval** at key decision points.
-
----
-
-## Architecture
-
-```mermaid
-flowchart TD
-    A["👤 User Input: Topic"] --> B["🎛️ orchestrator<br/><i>Routes, gates, checkpoints</i>"]
-
-    B --> C["🔍 researcher<br/>[optional]"]
-    B --> D["📈 seo-expert<br/>[optional]"]
-    B --> E["🎭 digital-twin"]
-
-    C --> F["📄 Research Brief"]
-    D --> G["📄 SEO Structure"]
-    E --> H["📄 Voice Briefs"]
-
-    F & G & H --> I["✍️ blog-writer"]
-    I --> J["📝 editor<br/><b>Quality Gate</b><br/><i>score >= 85</i>"]
-
-    J -->|PASS| K["🖼️ image-creator<br/>[optional]<br/><i>2-step approval</i>"]
-    J -->|PASS| L["🔄 repurposer<br/>[optional]"]
-    J -->|PASS| M["📝 editor-light<br/>[optional]"]
-    J -->|LOOP<br/>score 70-84| I
-
-    L --> N["💼 linkedin-writer<br/>[optional]"]
-    L --> O["🐦 x-thread-writer<br/>[optional]"]
-    L --> P["🎬 reel-script-writer<br/>[optional]"]
-
-    K & M & N & O & P --> Q["📋 report-writer"]
-    Q --> R["🧠 feedback-architect"]
-    Q --> S["📚 history-logger"]
-
-    R --> T["🔄 Memory Loop<br/><i>Proposed updates</i>"]
-    T --> U{"👤 Engineer<br/>Approval?"}
-    U -->|✅ Approve| V["💾 Update Memory"]
-    U -->|❌ Reject| W["⏭️ Skip"]
-    V & W --> X["🏁 Session Complete"]
-
-    style B fill:#e1f5fe
-    style J fill:#fff3e0
-    style U fill:#fce4ec
-    style X fill:#e8f5e9
-    style C stroke-dasharray: 5 5
-    style D stroke-dasharray: 5 5
-    style K stroke-dasharray: 5 5
-    style L stroke-dasharray: 5 5
-    style M stroke-dasharray: 5 5
-    style N stroke-dasharray: 5 5
-    style O stroke-dasharray: 5 5
-    style P stroke-dasharray: 5 5
-```
-
-### Phase Flow
-
-| Phase | Agent | Purpose | Skippable? |
-|-------|-------|---------|------------|
-| 1 | orchestrator | Routes and checkpoints | Never |
-| 2 | researcher | Web research, fact-checking | Yes |
-| 3 | seo-expert | Keywords, structure, meta | Yes |
-| 4 | digital-twin | Voice brief generation | Rarely |
-| 5 | blog-writer | Long-form blog post | No |
-| 6 | editor | Quality gate (score 0-100) | No |
-| 7 | image-creator | AI image concepts + generation | Yes |
-| 8 | repurposer | Distill blog into briefs | Yes |
-| 9 | linkedin-writer | LinkedIn post | Yes |
-| 10 | x-thread-writer | X/Twitter thread | Yes |
-| 11 | reel-script-writer | Video script | Yes |
-| 12 | editor-light | Short-form quality check | Yes |
-| 13 | report-writer | Session report | No |
-| 14 | feedback-architect | Learning + memory proposals | No |
-| 15 | history-logger | Audit trail | No |
-
-### Confidence Gates
-
-Every session is gated by **confidence scores**:
-
-| Gate | Threshold | Action if Failed |
-|------|-----------|------------------|
-| Research | `high` required, `medium` checkpoints | `low` = BLOCK |
-| SEO Opportunity | `high`/`medium`/`low` tracked | `low` = checkpoint |
-| Content Quality | `>= 85` PASS, `70-84` LOOP, `< 70` BLOCK | LOOP up to 2x |
-| Session | `high`/`medium`/`low` retrospective | `low` = major review |
-
----
+The workflow is intentionally governed: mandatory phases cannot be skipped,
+conditional phases require recorded skip reasons, and reusable memory updates
+require engineer approval.
 
 ## Installation
 
 ### Prerequisites
 
-- [OpenCode CLI](https://opencode.ai/docs/installation) installed
-- At least one AI provider configured (`opencode providers login`)
+- OpenCode CLI installed.
+- At least one OpenCode provider configured.
 
-### Setup
-
-hello-writer offers **two setup paths**:
-
-#### Path 1: Fast Terminal Setup (`./setup.sh`)
-
-Best for: users who want speed, know what they want, and are comfortable in the terminal.
+Useful checks:
 
 ```bash
-# Clone the repository
-git clone https://github.com/0xlukem/hello-writer.git hello-writer
-cd hello-writer
-
-# Run the interactive setup wizard
-./setup.sh
+opencode --version
+opencode providers list
+opencode models
 ```
 
-The wizard will:
-1. Check your OpenCode installation
-2. Discover available AI models
-3. Let you assign models (smart defaults or custom)
-4. Choose platforms (Blog, LinkedIn, X, Reels)
-5. Build your Digital Twin voice profile (15 questions)
-6. Select a styleguide (Google Dev, custom, or none)
-7. Generate all agent definitions
+### Setup Paths
 
-**Re-run anytime:**
+There are two supported setup paths. Both produce the same local artifacts:
+`config/content-engine.yml`, `.opencode/agents/*.md`,
+`.opencode/agents/memory/*.md`, `output/`, and
+`.opencode/testing/checkpoint-transcripts/`.
+
+| Path | Best for | Command |
+| --- | --- | --- |
+| Terminal setup | Repeatable local setup with predictable prompts and validation. | `./setup.sh` |
+| Install alias | Users who expect an install entrypoint. Same behavior as setup. | `./install.sh` |
+| AI-guided setup | First-time users who want a deeper conversational voice interview. | `opencode`, then ask `Run the setup workflow` |
+
+Terminal setup is local and deterministic. AI-guided setup is better for richer
+Digital Twin calibration, but it still follows the same setup contract.
+
+## Setup Modes
+
+`setup.sh` is the canonical entrypoint. Keep this table in sync with
+`./setup.sh --help`.
+
+| Command | Purpose |
+| --- | --- |
+| `./setup.sh` | Full interactive setup wizard. |
+| `./install.sh` | Alias for `./setup.sh`. Passes all args through. |
+| `./setup.sh --quick` | Defaults plus a short voice interview and render. |
+| `./setup.sh --voice` | Rebuild only `.opencode/agents/memory/digital-twin.memory.md`. |
+| `./setup.sh --technical` | Models, platforms, styleguide, and render while preserving voice by default. |
+| `./setup.sh --dry-run [mode]` | Preview planned writes without changing files. Combine with any mode. |
+| `./setup.sh --render-only` | Re-render `.opencode/agents/*.md` from existing config/templates. |
+| `./setup.sh --validate-only` | Validate generated config, agents, memory files, output metadata, and model ids when model discovery works. |
+| `./setup.sh --help` | Show setup help. |
+
+Prompt commands inside the setup wizard:
+
+- `help`: show prompt help.
+- `skip`: accept the default or leave an optional answer blank.
+- `back`: return to the previous supported voice section.
+- `quit`: exit without continuing.
+
+Set `NO_COLOR=1` if your terminal should avoid colored output:
+
 ```bash
-./setup.sh  # Detects existing config, offers update/overwrite
+NO_COLOR=1 ./setup.sh --help
 ```
 
-#### Path 2: AI-Guided Setup (`workflows/setup-workflow.md`)
+## Current Verified State
 
-Best for: users who want a conversational experience, follow-up questions, and automatic writing sample analysis.
+The current setup implementation is expected to pass:
 
 ```bash
-# Clone the repository
-git clone https://github.com/0xlukem/hello-writer.git hello-writer
-cd hello-writer
+bash -n setup.sh
+bash -n install.sh
+./setup.sh --validate-only
+```
 
-# Run the AI-guided setup
+For a clean-install check, copy the repository to a temporary directory while
+excluding generated artifacts, then run `NO_COLOR=1 ./setup.sh --quick` with
+test answers. Expected results:
+
+- 16 generated agent files in `.opencode/agents/`.
+- 11 generated `.memory.md` files in `.opencode/agents/memory/`.
+- `config/content-engine.yml`.
+- `output/_meta.md`.
+- No unresolved `{{MODEL_PLACEHOLDER}}` tokens in generated agents.
+- No Digital Twin backup prompt during a first clean install.
+
+Generated, user-specific artifacts are ignored by git:
+
+- `.opencode/agents/`
+- `.opencode/testing/`
+- `config/content-engine.yml`
+- `output/`
+
+That keeps local personas, generated agents, and produced content out of the
+shared repository.
+
+## Running a Content Session
+
+```bash
 opencode
-# Then ask: "Run the setup workflow"
+# Ask: Run the content engine workflow to write a blog about [your topic]
 ```
 
-The AI setup agent will:
-1. Check your environment and discover models
-2. **Conversationally** assign models with explanations
-3. Ask follow-up questions to deepen understanding
-4. **Analyze your writing samples** and extract voice patterns automatically
-5. Build a richer Digital Twin profile from the analysis
-6. Select a styleguide
-7. Generate and validate everything
+During a session, the orchestrator:
 
-**Key differences from `./setup.sh`:**
+1. Confirms the topic, platforms, research needs, and image preference.
+2. Creates `output/YYYY-MM-DD_topic-slug/`.
+3. Delegates each phase to the correct specialist agent.
+4. Applies confidence gates and retry loops.
+5. Saves final content and artifacts as Markdown.
+6. Runs mandatory closeout with report, feedback, and history logging.
+7. Presents proposed memory updates for approval.
 
-| Feature | `./setup.sh` | AI-Guided |
-|---------|-------------|-----------|
-| **Interaction** | Linear Q&A | Conversational chat |
-| **Follow-ups** | None | 1-2 per question |
-| **Sample analysis** | Stores raw text | Extracts patterns automatically |
-| **Speed** | ~2 minutes | ~5-10 minutes |
-| **Best for** | Power users | First-time users, rich profiles |
+## Generated Files
 
----
+Session output shape:
 
-## Usage
-
-### Running the Workflow
-
-```bash
-# Start OpenCode and ask the orchestrator to run the workflow
-opencode
-# Then ask: "Run the content engine workflow to write a blog about [your topic]"
-```
-
-### During a Session
-
-The orchestrator will guide you through:
-- **Phase 0**: Confirm topic, platforms, and image preference
-- **Phase 1+**: Agents run automatically with checkpoints at gates
-- **End**: Review proposed memory updates and approve/reject
-
-### Output Structure
-
-```
+```text
 output/
-├── _meta.md                  # Root metadata for generated sessions
-└── 2026-05-08_my-topic/
-    ├── _meta.md              # Session report
+├── _meta.md
+└── YYYY-MM-DD_topic-slug/
+    ├── _meta.md
     ├── final/
-    │   ├── blog.md           # Blog post
-    │   ├── linkedin-post.md  # LinkedIn post (if enabled)
-    │   ├── x-thread.md       # X thread (if enabled)
-    │   └── reel-script.md    # Reel script (if enabled)
+    │   ├── blog.md
+    │   ├── linkedin-post.md
+    │   ├── x-thread.md
+    │   └── reel-script.md
     ├── artifacts/
     │   ├── research-brief.md
     │   ├── seo-analysis.md
@@ -271,277 +169,193 @@ output/
     │   ├── editor-output.md
     │   └── feedback-architect.md
     └── images/
-        ├── my-topic-photo-1.png
-        ├── my-topic-photo-2.png
-        └── my-topic-photo-3.png
+        ├── prompts.md
+        └── topic-image-1.png
 ```
 
----
+Not every session creates every optional file. Blog output is always enabled;
+LinkedIn, X, Reels, and images depend on setup config and session approval.
 
-## Platform Support
+## Agent Architecture
 
-| Platform | Output | Conditional |
-|----------|--------|-------------|
-| **Blog** | Markdown, 800-2,500 words | Always enabled |
-| **LinkedIn** | Native post format | Optional |
-| **X / Twitter** | Numbered thread, <=280 chars/tweet | Optional |
-| **Reels** | 30-90s script with visual cues | Optional |
+| Phase | Agent | Required | Purpose |
+| --- | --- | --- | --- |
+| 1 | orchestrator | Yes | Plans, delegates, checkpoints, and reports. |
+| 2 | researcher | Conditional | Produces source-grounded research. |
+| 3 | seo-expert | Conditional | Plans search intent and blog structure. |
+| 4 | digital-twin | Yes | Converts voice memory and any user guidance into Voice Briefs. |
+| 5 | blog-writer | Yes | Writes the long-form blog. |
+| 6 | editor | Yes | Scores quality and triggers rewrite loops. |
+| 7 | image-creator | Conditional | Proposes and generates approved blog images. |
+| 8 | repurposer | Conditional | Creates platform briefs from the approved blog. |
+| 9 | linkedin-writer | Conditional | Writes the LinkedIn post. |
+| 10 | x-thread-writer | Conditional | Writes the X thread. |
+| 11 | reel-script-writer | Conditional | Writes the Reel script. |
+| 12 | editor-light | Conditional | Checks short-form outputs. |
+| 13 | report-writer | Yes | Produces the final session report. |
+| 14 | feedback-architect | Yes | Produces retrospective and memory proposals. |
+| 15 | history-logger | Yes | Appends factual audit history. |
 
-Enable/disable platforms during setup or by editing `config/content-engine.yml`.
+`digital-twin` is mandatory. If the user provides explicit voice guidance, that
+guidance becomes input to `digital-twin`; it does not skip the phase.
 
----
+## Governance and Checkpoints
 
-## How It Works
+Canonical runtime policy lives in `agent-runtime-guidelines.md`.
 
-### Template System
+Important rules:
 
-Agent definitions live in `templates/agents/*.md.template` with `{{VAR}}` placeholders. During setup, these are rendered into `.opencode/agents/*.md` with your chosen models.
+- Mandatory phases cannot be skipped.
+- Conditional skips require a skip tag, risk assessment, safety guard, engineer
+  approval, and transcript path.
+- Research confidence can proceed, checkpoint, or block the workflow.
+- Blog quality must reach `>= 85`; scores `70-84` loop back to the writer, and
+  scores `< 70` block or require a checkpoint.
+- Image generation requires approval before concepts and again before final
+  generation.
+- `feedback-architect` proposes memory updates only.
+- `history-logger` may append factual audit entries to its own history memory
+  without separate approval; it may not write editorial preferences elsewhere.
 
-```yaml
-# templates/agents/blog-writer.md.template
----
-name: blog-writer
-model: {{BLOG_WRITER_MODEL}}
----
+## Digital Twin
+
+The Digital Twin is a reusable voice memory stored at:
+
+```text
+.opencode/agents/memory/digital-twin.memory.md
 ```
 
-After setup:
-```yaml
-# .opencode/agents/blog-writer.md
----
-name: blog-writer
-model: opencode-go/deepseek-v4-pro
----
+It captures:
+
+- Brand snapshot.
+- Audience.
+- Positioning.
+- Tone sliders.
+- Writing mechanics.
+- Platform rules.
+- Forbidden language and claims.
+- Sample analysis.
+- Calibration notes.
+- Drift detection rules.
+
+Rebuild it with:
+
+```bash
+./setup.sh --voice
 ```
 
-### Single Source of Truth
-
-All configuration lives in `config/content-engine.yml`:
-
-```yaml
-models:
-  orchestrator: "opencode-go/kimi-k2.6"
-  blog_writer: "opencode-go/deepseek-v4-pro"
-  # ... etc
-
-platforms:
-  blog: true
-  linkedin: true
-  x: false
-  reel: false
-
-features:
-  digital_twin: true
-  images: true
-  styleguide: "google-dev-light"
-```
-
----
+In update flows, setup preserves the existing Digital Twin by default and asks
+before replacing it.
 
 ## Configuration
 
-### Changing Models
-
-Edit `config/content-engine.yml` and re-run:
-```bash
-./setup.sh  # Select "Update" to keep other settings
-```
-
-Or edit directly and re-render agents:
-```bash
-# Edit config/content-engine.yml, then:
-./setup.sh --render-only
-
-# Validate the generated config, agents, and memories:
-./setup.sh --validate-only
-```
-
-### Disabling Agents
-
-In `config/content-engine.yml`:
-
-```yaml
-platforms:
-  blog: true
-  linkedin: false   # Skip LinkedIn writer
-  x: false          # Skip X thread writer
-  reel: false       # Skip reel script writer
-```
-
-### Adding a Custom Agent
-
-1. Create `templates/agents/my-agent.md.template`
-2. Add model placeholder: `model: {{MY_AGENT_MODEL}}`
-3. Add to `setup.sh` model assignment section
-4. Add to `workflows/content-engine.md` phase list
-5. Re-run `./setup.sh`
-
----
-
-## Digital Twin (Voice Profile)
-
-Your **Digital Twin** is a persona profile that ensures all content sounds like *you*, not generic AI output.
-
-### What's in a Voice Profile?
-
-```markdown
-# Digital Twin Profile
-
-## Identity
-- Name: Alex Rivera
-- Background: Full-stack developer
-- Core belief: "Code is communication first"
-
-## Voice Core
-- Personality: Clear, practical, self-deprecating
-- Metaphors: Cooking, gardening, Legos
-- Forbidden: "simply", "just", "obviously"
-
-## Voice by Platform
-### Blog
-- Tone: Educational, friendly
-- Structure: Story hook -> H2s -> soft CTA
-```
-
-### Creating Your Profile
-
-During setup, answer 15 questions about:
-- Your identity and background
-- Your personality and values
-- Platform-specific tones
-- Forbidden words and phrases
-- Writing samples (optional)
-
-Or start with the **demo persona** (Alex Rivera) and customize.
-
-### Evolution
-
-The Digital Twin **learns over time**. After each session, the feedback-architect proposes updates (new forbidden words, adjusted tones, etc.). You approve each change.
-
----
-
-## Memory Loop
-
-At the end of every session, the engine proposes **self-improvements**:
-
-1. **feedback-architect** analyzes all phase outputs
-2. Identifies patterns (recurring issues, successful approaches)
-3. Proposes updates to agent memory files:
-   - `researcher.memory.md` — preferred sources
-   - `editor.memory.md` — common corrections
-   - `blog-writer.memory.md` — formatting preferences
-   - `digital-twin.memory.md` — voice refinements
-4. **Orchestrator checkpoints** with you: *"Approve these 3 updates?"*
-5. Only **approved** updates are applied
-
-This makes the engine **smarter with every session** while keeping you in control.
-
-### Retrospective Format
-
-Every session ends with:
+The generated configuration lives at:
 
 ```text
-SESSION RETROSPECTIVE
-- what_we_did:
-  - <summary of phases run>
-- what_we_learned:
-  - <lesson>
-- what_went_ok:
-  - <item>
-- what_went_wrong:
-  - <item>
-- how_do_we_fix_it:
-  - <fix>
-- what_we_could_do_better_next_time:
-  - <improvement>
+config/content-engine.yml
 ```
 
----
+Common changes:
+
+- Change model ids, then run `./setup.sh --render-only`.
+- Enable or disable LinkedIn, X, Reels, or images, then re-render.
+- Validate local setup with `./setup.sh --validate-only`.
+
+If `opencode models` cannot be reached, setup still validates local files but
+reports model availability as not verified.
 
 ## Troubleshooting
 
-### "opencode CLI not found"
+### `opencode CLI not found`
 
-Install OpenCode:
-```bash
-npm install -g @opencode-ai/cli
-```
-
-### "Model configured not valid"
-
-Run `opencode models` to see available models. Update `config/content-engine.yml` with valid model IDs, then re-run `./setup.sh`.
-
-### Agents not generating content
-
-Check that:
-1. `setup.sh` completed without errors
-2. `.opencode/agents/` directory has 16 `.md` files
-3. `config/content-engine.yml` exists
-4. OpenCode providers are configured (`opencode providers list`)
-
-### Memory files growing too large
-
-The engine enforces size caps (200 lines for most, 1000 for history). Old entries are archived automatically. You can also manually archive:
-```bash
-mv .opencode/agents/memory/editor.memory.md .opencode/agents/memory/archive/editor-$(date +%Y%m%d).md
-```
-
----
-
-## Contributing
-
-Contributions welcome! Areas of interest:
-
-- New platform writers (Substack, Medium, etc.)
-- Additional styleguides (AP, Chicago, etc.)
-- Better persona interview questions
-- Non-English language support
-- Python/LangChain port for Claude/Anthropic
-
-### Development
+Install and configure OpenCode, then rerun setup.
 
 ```bash
-# The project structure
-templates/agents/          # Agent templates with {{VAR}} placeholders
-templates/memory/          # Blank memory templates
-templates/demo/            # Demo persona
-templates/styleguide-*     # Built-in styleguides
-.opencode/agents/          # Rendered agent definitions (generated by setup.sh)
-workflows/                 # Workflow definitions
-agent-runtime-guidelines.md # Confidence gates and contracts
-setup.sh                   # Interactive wizard
+opencode --version
+opencode providers list
 ```
 
-### License
+### Model availability not verified
 
-MIT License — see [LICENSE](LICENSE).
+Run:
 
----
+```bash
+opencode models
+```
 
-## Acknowledgments
+If the model list works manually, rerun:
 
-Built with [OpenCode](https://opencode.ai) and inspired by real-world content workflows. The memory loop design is influenced by reinforcement learning with human feedback (RLHF) principles — the engine learns from every session, but you stay in control.
+```bash
+./setup.sh --validate-only
+```
 
----
+### Agents are missing or not updated
 
-## FAQ
+Run:
 
-**Q: Does this only work with OpenCode?**
+```bash
+./setup.sh --render-only
+./setup.sh --validate-only
+```
 
-A: The current implementation is OpenCode-specific because it uses OpenCode's agent execution engine. However, the *workflow design* is universal. A Python/LangChain port for Claude/Anthropic is a planned v2 feature.
+Expected generated agent count is 16 unless you deliberately extended the
+workflow.
 
-**Q: Can I use Claude instead of the default models?**
+### First setup asks for a Digital Twin backup
 
-A: If you configure an Anthropic provider in OpenCode (`opencode providers login`), Claude models will appear in `opencode models` and you can assign them to agents.
+That should not happen in a clean install. If it does, check whether an old
+`.opencode/agents/memory/digital-twin.memory.md` already exists.
 
-**Q: How much does it cost to run?**
+## Maintenance Guide
 
-A: Depends on your OpenCode provider and model choices. The "flash" models are cheaper and used for fast agents (social writers, editor-light). "Pro" models are used for research and blog writing.
+Use this checklist when changing the engine.
 
-**Q: Is my data private?**
+### Adding or removing an agent
 
-A: All content is generated locally in the `output/` folder. Memory files stay in `.opencode/agents/memory/`. Nothing is sent to external servers except through your configured OpenCode providers.
+- Update `templates/agents/*.md.template`.
+- Update model defaults and assignment in `setup.sh`.
+- Update `render_agents` placeholder replacement if a new model variable exists.
+- Update `validate_setup` expected agent list and count.
+- Update `workflows/content-engine.md`.
+- Update `agent-runtime-guidelines.md` phase matrix.
+- Update this README's Agent Architecture table.
 
-**Q: Can multiple people use the same installation?**
+### Adding or changing a setup mode
 
-A: Each person should run `./setup.sh` to generate their own `.opencode/agents/` and `config/`. The `templates/` and `workflows/` are shared, but generated agents and personas are per-user.
+- Update `parse_args`, `mode_label`, and step configuration in `setup.sh`.
+- Update `usage()`.
+- Update the Setup Modes table in this README.
+- Add or adjust validation scenarios.
+
+### Changing skip or memory rules
+
+- Update `agent-runtime-guidelines.md`.
+- Update `workflows/content-engine.md`.
+- Update `templates/agents/orchestrator.md.template`.
+- Update relevant specialist agent templates.
+- Update this README's Governance and Checkpoints section.
+
+### Changing generated artifacts
+
+- Update `setup.sh` generation and validation.
+- Update `.gitignore` if needed.
+- Update the Generated Files section.
+- Verify clean setup in a temporary directory.
+
+## Development Checks
+
+Recommended before handoff:
+
+```bash
+bash -n setup.sh
+bash -n install.sh
+./setup.sh --validate-only
+NO_COLOR=1 ./setup.sh --dry-run --quick
+```
+
+For a full clean-install check, run `./setup.sh --quick` in a temporary copy of
+the repo with generated artifacts excluded.
+
+## License
+
+MIT License. See `LICENSE`.

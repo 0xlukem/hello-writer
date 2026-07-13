@@ -46,7 +46,7 @@ Workflow-specific execution contract:
 - Skip behavior comes from runtime guidelines.
   - `researcher` may auto-skip only with `NO_RESEARCH_NEEDED`.
   - `seo-expert` may auto-skip only with `NO_SEO_NEEDED`.
-  - `digital-twin` may auto-skip only with `NO_VOICE_ADAPTATION` (rare, only when user explicitly provides full voice guidance).
+  - `digital-twin` is mandatory. User-provided voice guidance is passed into this phase, not used to skip it.
   - `image-creator` may auto-skip only with `NO_IMAGES` or `BLOG_ONLY`.
   - `repurposer` and platform writers may auto-skip only with `BLOG_ONLY` or `NO_SHORTFORM`.
 - Image generation policy:
@@ -59,3 +59,4 @@ Closeout contract:
 - End every session with retrospective summary.
 - If execution blocks early, run partial closeout phases: `report-writer`, `history-logger`, `feedback-architect`.
 - Memory update checkpoint: feedback-architect proposes updates, orchestrator checkpoints for engineer approval before applying.
+- History log exception: history-logger may append a factual audit entry to `.opencode/agents/memory/history-logger.memory.md` without separate memory-update approval.

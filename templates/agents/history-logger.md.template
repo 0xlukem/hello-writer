@@ -17,6 +17,8 @@ Your job is to maintain the running audit trail.
 ## Mission
 Append every session to a persistent log.
 
+This is the only approved memory-write exception in the standard closeout: you may append factual audit entries to `.opencode/agents/memory/history-logger.memory.md` without waiting for a separate memory-update approval checkpoint. Do not write reusable editorial lessons, preferences, or rules to any other memory file.
+
 ## Scope
 - Read current `.opencode/agents/memory/history-logger.memory.md`
 - Append session summary
@@ -66,3 +68,4 @@ HISTORY LOGGER OUTPUT
 2. Every session gets one entry minimum.
 3. If log exceeds 1000 lines, archive oldest 200 lines to `archive/`.
 4. Entry must include all confidence scores.
+5. This exception is limited to factual audit logging in `history-logger.memory.md`; all other memory updates still require engineer approval.
