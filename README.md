@@ -1,10 +1,22 @@
 # hello-writer
 
+[![OpenCode](https://img.shields.io/badge/OpenCode-agent%20workflow-111827)](https://opencode.ai)
+![Agents](https://img.shields.io/badge/agents-16-blue)
+![Output](https://img.shields.io/badge/output-Markdown-2ea44f)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+
 Reusable multi-agent content engine for blogs, social posts, and video scripts.
 
 `hello-writer` turns one topic into a governed content session: research, SEO,
 voice adaptation, writing, editing, optional images, social repurposing, session
 reporting, and memory proposals through OpenCode agents.
+
+At a glance:
+
+- Input: one topic plus optional platform, image, source, and voice guidance.
+- Engine: 16 OpenCode agents generated from local templates and config.
+- Output: Markdown content and audit artifacts under `output/YYYY-MM-DD_topic-slug/`.
+- Setup: terminal wizard via `./setup.sh` or conversational setup inside OpenCode.
 
 ## Quick Start
 
@@ -55,7 +67,8 @@ opencode models
 
 ### Setup Paths
 
-There are two supported setup paths. Both produce the same local artifacts:
+There are two setup flows and one convenience alias. Both setup flows produce
+the same local artifacts:
 `config/content-engine.yml`, `.opencode/agents/*.md`,
 `.opencode/agents/memory/*.md`, `output/`, and
 `.opencode/testing/checkpoint-transcripts/`.
@@ -63,8 +76,8 @@ There are two supported setup paths. Both produce the same local artifacts:
 | Path | Best for | Command |
 | --- | --- | --- |
 | Terminal setup | Repeatable local setup with predictable prompts and validation. | `./setup.sh` |
-| Install alias | Users who expect an install entrypoint. Same behavior as setup. | `./install.sh` |
 | AI-guided setup | First-time users who want a deeper conversational voice interview. | `opencode`, then ask `Run the setup workflow` |
+| Install alias | Users who expect an install entrypoint. Same behavior as terminal setup. | `./install.sh` |
 
 Terminal setup is local and deterministic. AI-guided setup is better for richer
 Digital Twin calibration, but it still follows the same setup contract.
@@ -170,7 +183,7 @@ output/
     │   └── feedback-architect.md
     └── images/
         ├── prompts.md
-        └── topic-image-1.png
+        └── topic-slug-photo-1.png
 ```
 
 Not every session creates every optional file. Blog output is always enabled;

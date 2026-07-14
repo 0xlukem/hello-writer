@@ -7,29 +7,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-07-14
+
+### Added
+
+- Added committed agent templates for the full 16-agent OpenCode engine under `templates/agents/`.
+- Added new memory templates for `image-creator`, `linkedin-writer`, `x-thread-writer`, and `reel-script-writer`, bringing generated memory validation to 11 `.memory.md` files.
+- Added `opencode.json` with `orchestrator` as the default agent and all specialist agents configured as subagents.
+- Added `install.sh` as a thin alias for `setup.sh`.
+- Added setup modes for quick setup, voice-only rebuilds, technical reconfiguration, render-only, validate-only, and dry-run previews.
+- Added root output metadata generation and `.opencode/testing/checkpoint-transcripts/` setup for checkpoint evidence.
+
+### Changed
+
+- Migrated generated agent and memory artifacts from `agents/` to `.opencode/agents/` and updated setup, workflows, runtime guidelines, ignores, and docs to match.
+- Reworked `setup.sh` into a mode-aware setup wizard with step labels, `NO_COLOR` support, prompt commands, write-plan confirmation, existing-config detection, and safer update/overwrite flows.
+- Rebuilt the Digital Twin setup flow from a hardcoded persona-style wizard into reusable Brand, Audience, Positioning, Tone, Writing Mechanics, Platform Rules, Forbidden Patterns, Sample Analysis, Calibration, and Drift Detection sections.
+- Improved writing sample handling with local pattern extraction and optional AI-assisted analysis that fails safely.
+- Preserved existing Digital Twin voice memory by default in update and technical flows, with optional backups before overwrite.
+- Strengthened setup validation for expected agent count, memory count, unresolved model placeholders, output metadata, and model IDs when `opencode models` is available.
+- Updated runtime governance so `digital-twin` is mandatory, voice guidance is normalized through that phase, checkpoint transcripts live under `.opencode/testing/`, and history logging has a narrow factual-audit exception.
+- Clarified the content workflow output contract for `final/`, `artifacts/`, `images/`, root `_meta.md`, skip behavior, image approval, blocked-session closeout, and memory update checkpoints.
+
+### Documentation
+
+- Improved README onboarding UX with project badges and a short "At a glance" summary.
+- Made the first README viewport clearer about inputs, the 16-agent engine, generated Markdown output, and setup options.
+- Clarified the different setup workflows: terminal setup, AI-guided OpenCode setup, and the `install.sh` convenience alias.
+- Corrected the generated image filename example to match the `topic-slug-photo-1.png` convention.
+- Replaced the generic `Unreleased` / `Planned` section with versioned notes for the current repository state.
+- Moved `--dry-run` setup mode out of the planned roadmap because it already exists.
+
+---
+
 ## [1.0.0] - 2026-05-08
 
 ### Added
 
 - **16-agent content engine** — 15 content agents + 1 setup orchestrator
 - **Dual setup paths**:
-  - `./setup.sh` — Fast terminal wizard (~2 min)
-  - `workflows/setup-workflow.md` — AI-guided conversational setup (~5-10 min)
-- **Digital Twin persona system** — 15-question wizard that builds a voice profile
-- **Automatic writing sample analysis** — AI-guided setup reads samples and extracts voice patterns (hooks, tone, CTAs, forbidden words)
-- **Template rendering system** — `{{VAR}}` placeholders in `templates/agents/` render to `.opencode/agents/` with user-chosen models
+  - `./setup.sh` — Fast terminal wizard
+  - `workflows/setup-workflow.md` — AI-guided conversational setup
+- **Digital Twin persona system** — guided wizard for building a voice profile
+- **Writing sample analysis** — setup can extract reusable voice patterns from samples
+- **Template rendering system** — `{{VAR}}` placeholders render configured agent files
 - **Config-driven architecture** — `config/content-engine.yml` as single source of truth
-- **Confidence gates** — Research, SEO, content quality (0-100), and session confidence scores
+- **Confidence gates** — Research, SEO, content quality, and session confidence scores
 - **Checkpoint system** — Approval-required decisions produce transcript artifacts
 - **Memory loop** — `feedback-architect` proposes memory updates at session end; orchestrator checkpoints for engineer approval
-- **Platform support** — Blog (always), LinkedIn, X/Twitter, Reels (toggleable)
-- **Image generation** — Two-step approval: propose 3 concepts, await approval, then generate
+- **Platform support** — Blog, LinkedIn, X/Twitter, and Reels
+- **Image generation** — Two-step approval: propose concepts, await approval, then generate
 - **Built-in styleguides** — Google Developer Docs (Full) and (Light)
-- **Demo persona** — Alex Rivera (developer-educator) included as starting example
-- **Re-runnable setup** — Detects existing config, offers update / overwrite / cancel
-- **Blank memory templates** — 11 agent memory files auto-generated with section headers
-- **Agent count validation** — Setup verifies all 16 agents are rendered
-- **Model validation** — Checks chosen models against `opencode models`
+- **Re-runnable setup** — Detects existing config and offers update, overwrite, or cancel
+- **Blank memory templates** — Core agent memory files generated with section headers
+- **Agent count validation** — Setup verifies generated agents
+- **Model validation** — Checks chosen models against `opencode models` when available
 
 ### Architecture
 
@@ -38,21 +70,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Runtime governance via `agent-runtime-guidelines.md`
 - Per-user generated files excluded from git (`.gitignore`)
 - Portfolio-ready with MIT License
-
----
-
-## [Unreleased]
-
-### Planned
-
-- Python/LangChain port for Claude/Anthropic (provider-agnostic)
-- Newsletter writer agent (Substack, ConvertKit)
-- Medium writer agent
-- Additional built-in styleguides (AP Style, Chicago Manual)
-- Multi-language persona support
-- `--dry-run` flag for setup.sh
-- Reconfigure workflow for partial updates
-- Web UI for non-technical users
 
 ---
 
