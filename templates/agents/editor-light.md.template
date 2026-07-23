@@ -3,6 +3,7 @@ name: editor-light
 description: Lightweight editor for short-form content (LinkedIn, X, Reels). Faster review with adjusted thresholds.
 model: {{EDITOR_LIGHT_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   grep: allow

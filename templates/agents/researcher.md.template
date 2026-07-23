@@ -3,6 +3,7 @@ name: researcher
 description: Gathers facts, stats, trends, and competitor angles on topics using web search and reasoning. Prevents generic or hallucinated content.
 model: {{RESEARCHER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

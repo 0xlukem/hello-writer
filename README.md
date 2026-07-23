@@ -30,6 +30,10 @@ opencode
 # Ask: Run the content engine workflow to write a blog about [your topic]
 ```
 
+OpenCode starts with the `orchestrator` primary agent by default. Use Tab to
+cycle between primary agents (`orchestrator`, `setup-orchestrator`, `build`,
+`plan`); specialist agents are subagents the orchestrator delegates to.
+
 If you naturally look for an install command, `./install.sh` is available as a
 thin alias for `./setup.sh`.
 
@@ -191,6 +195,16 @@ LinkedIn, X, Reels, and images depend on setup config and session approval.
 
 ## Agent Architecture
 
+Agent modes follow OpenCode rules:
+
+- `orchestrator` and `setup-orchestrator` are **primary** agents. They drive
+  interactive sessions (checkpoints, setup interview), are selectable with
+  Tab, and `orchestrator` is the `default_agent` in `opencode.json`.
+- The 14 specialist agents below are **subagents**. The orchestrator delegates
+  each phase to them via the Task tool. They are hidden from the `@`
+  autocomplete (`hidden: true`) because they are not meant to be invoked
+  directly, and they never drive a session themselves.
+
 | Phase | Agent | Required | Purpose |
 | --- | --- | --- | --- |
 | 1 | orchestrator | Yes | Plans, delegates, checkpoints, and reports. |
@@ -313,6 +327,21 @@ Run:
 
 Expected generated agent count is 16 unless you deliberately extended the
 workflow.
+
+### OpenCode starts with `build` instead of the orchestrator
+
+`default_agent` in `opencode.json` must point to a primary agent. If the
+orchestrator is configured as a subagent, OpenCode falls back to the built-in
+`build` agent with a warning, and the orchestrator is not selectable with Tab.
+
+Confirm both places say `mode: primary` for `orchestrator`:
+
+- `opencode.json` under `agent.orchestrator.mode`
+- `.opencode/agents/orchestrator.md` frontmatter (fix templates, then run
+  `./setup.sh --render-only`)
+
+The same applies to `setup-orchestrator`. Specialist agents are subagents by
+design; that part is expected.
 
 ### First setup asks for a Digital Twin backup
 

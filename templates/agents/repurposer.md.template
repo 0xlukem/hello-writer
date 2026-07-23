@@ -3,6 +3,7 @@ name: repurposer
 description: Distills approved long-form blog into platform-specific briefs for LinkedIn, X, and Reels. Saves tokens by creating briefs instead of feeding full blogs to short-form writers.
 model: {{REPURPOSER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

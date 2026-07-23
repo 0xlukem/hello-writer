@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2026-07-22
+
+### Added
+
+- Marked the 14 specialist agents as `hidden: true` in templates and
+  `opencode.json`, keeping them out of the `@` autocomplete. The orchestrator
+  still delegates to them via the Task tool.
+- Added setup validation that `orchestrator.md` and `setup-orchestrator.md`
+  render with `mode: primary`, guarding against regressions of the
+  `default_agent` fallback issue.
+
+### Fixed
+
+- Set `orchestrator` and `setup-orchestrator` to `mode: primary` in
+  `opencode.json` and in their agent templates. Both were configured as
+  subagents, so `default_agent: "orchestrator"` was invalid: OpenCode fell
+  back to the built-in `build` agent after install and the orchestrator was
+  not selectable with Tab. Primary mode is required because both agents drive
+  interactive flows (orchestrator checkpoints, setup interview). The 14
+  specialist agents remain subagents delegated by the orchestrator.
+
+### Documentation
+
+- Documented primary vs subagent agent modes in the README Agent Architecture
+  section.
+- Added a troubleshooting entry for OpenCode falling back to `build` when
+  `default_agent` points to a subagent.
+- Noted Tab cycling between primary agents in Quick Start.
+
+---
+
 ## [1.1.0] - 2026-07-14
 
 ### Added

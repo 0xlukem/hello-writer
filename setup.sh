@@ -1574,6 +1574,15 @@ validate_setup() {
         fi
     done
 
+    local primary_agents=("orchestrator.md" "setup-orchestrator.md")
+    local primary_agent
+    for primary_agent in "${primary_agents[@]}"; do
+        if [ -f "$AGENTS_DIR/$primary_agent" ] && ! grep -q '^mode: primary' "$AGENTS_DIR/$primary_agent"; then
+            print_error "$primary_agent must be mode: primary (default_agent requires a primary agent)"
+            errors=$((errors + 1))
+        fi
+    done
+
     local agent_count
     agent_count=$(find "$AGENTS_DIR" -maxdepth 1 -name '*.md' 2>/dev/null | wc -l | xargs)
     if [ "$agent_count" -ne "${#expected_agents[@]}" ]; then

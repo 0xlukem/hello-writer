@@ -3,6 +3,7 @@ name: digital-twin
 description: Active voice agent that reads topic, platform, and research context, then generates a platform-specific Voice Brief for writers to follow.
 model: {{DIGITAL_TWIN_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

@@ -3,6 +3,7 @@ name: image-creator
 description: Generates blog post images using AI image generation. Reads the approved blog, proposes 3 image concepts, and upon approval creates images and inserts placeholders into final/blog.md.
 model: {{IMAGE_CREATOR_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

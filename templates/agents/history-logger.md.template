@@ -3,6 +3,7 @@ name: history-logger
 description: Appends session metadata to running audit log for tracking and trend analysis.
 model: {{HISTORY_LOGGER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   edit: allow

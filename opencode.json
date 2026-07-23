@@ -6,52 +6,66 @@
   "instructions": ["AGENTS.md"],
   "agent": {
     "orchestrator": {
-      "mode": "subagent"
+      "mode": "primary"
     },
     "researcher": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "seo-expert": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "digital-twin": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "blog-writer": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "editor": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "editor-light": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "image-creator": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "repurposer": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "linkedin-writer": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "x-thread-writer": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "reel-script-writer": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "report-writer": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "feedback-architect": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "history-logger": {
-      "mode": "subagent"
+      "mode": "subagent",
+      "hidden": true
     },
     "setup-orchestrator": {
-      "mode": "subagent"
+      "mode": "primary"
     }
   }
 }

@@ -3,6 +3,7 @@ name: blog-writer
 description: Long-form content writer. Creates 800-2,500 word blog posts in Markdown following research and SEO briefs.
 model: {{BLOG_WRITER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

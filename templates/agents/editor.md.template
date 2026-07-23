@@ -3,6 +3,7 @@ name: editor
 description: Quality gate. Reviews content for grammar, flow, voice consistency, and fact-check flags. Returns content_quality_score (0-100).
 model: {{EDITOR_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   grep: allow

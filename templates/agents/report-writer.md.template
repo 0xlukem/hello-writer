@@ -3,6 +3,7 @@ name: report-writer
 description: Compiles final session report with all outputs, scores, and status.
 model: {{REPORT_WRITER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

@@ -3,6 +3,7 @@ name: reel-script-writer
 description: Converts repurposed briefs into 30-90 second video scripts with visual cues, hooks, and CTAs.
 model: {{REEL_SCRIPT_WRITER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

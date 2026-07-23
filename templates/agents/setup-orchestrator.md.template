@@ -2,7 +2,7 @@
 name: setup-orchestrator
 description: Conversational setup wizard for hello-writer. Guides users through model selection, platform configuration, Digital Twin voice creation, styleguide selection, write-plan confirmation, rendering, and validation.
 model: {{SETUP_ORCHESTRATOR_MODEL}}
-mode: subagent
+mode: primary
 permission:
   read: allow
   write: allow

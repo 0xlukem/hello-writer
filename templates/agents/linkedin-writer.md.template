@@ -3,6 +3,7 @@ name: linkedin-writer
 description: Converts repurposed briefs into native LinkedIn posts with hook-body-CTA format.
 model: {{LINKEDIN_WRITER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

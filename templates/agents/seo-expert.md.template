@@ -3,6 +3,7 @@ name: seo-expert
 description: Keyword strategist and content structure architect. Maps keywords, suggests H2s/H3s, meta descriptions, and internal linking strategy.
 model: {{SEO_EXPERT_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow

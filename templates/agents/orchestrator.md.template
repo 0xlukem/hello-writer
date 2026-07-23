@@ -2,7 +2,7 @@
 name: orchestrator
 description: Content Engine orchestrator that plans, delegates, checkpoints, and reports. Never writes content directly.
 model: {{ORCHESTRATOR_MODEL}}
-mode: subagent
+mode: primary
 permission:
   read: allow
   glob: allow

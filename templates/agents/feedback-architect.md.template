@@ -3,6 +3,7 @@ name: feedback-architect
 description: End-of-session learning synthesis. Extracts what worked, what failed, and how to fix it. Proposes agent memory updates. Returns session_confidence.
 model: {{FEEDBACK_ARCHITECT_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   edit: allow

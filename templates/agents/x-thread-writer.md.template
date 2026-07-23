@@ -3,6 +3,7 @@ name: x-thread-writer
 description: Converts repurposed briefs into numbered X/Twitter threads with hooks and carry-over lines.
 model: {{X_THREAD_WRITER_MODEL}}
 mode: subagent
+hidden: true
 permission:
   read: allow
   write: allow
